@@ -1,0 +1,2900 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>DadaShop</title>
+
+<style>
+
+:root{
+  --primary:#6c4df6;
+  --primary2:#9a78ff;
+  --dark:#17151f;
+  --text:#25222e;
+  --muted:#77717f;
+  --bg:#f7f7fb;
+  --card:#fff;
+  --border:#eae7f0;
+  --danger:#e5484d;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  background:var(--bg);
+  color:var(--text);
+}
+
+button,
+input,
+select,
+textarea{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:50;
+
+  background:
+    rgba(255,255,255,.94);
+
+  backdrop-filter:blur(18px);
+
+  border-bottom:
+    1px solid var(--border);
+}
+
+.nav{
+  max-width:1250px;
+  min-height:76px;
+
+  margin:auto;
+
+  padding:
+    12px 20px;
+
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  font-size:25px;
+  font-weight:950;
+
+  white-space:nowrap;
+}
+
+.logoIcon{
+  width:43px;
+  height:43px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:14px;
+
+  color:white;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--primary),
+      var(--primary2)
+    );
+
+  box-shadow:
+    0 8px 25px
+    rgba(108,77,246,.3);
+}
+
+.search{
+  flex:1;
+  position:relative;
+}
+
+.search span{
+  position:absolute;
+
+  left:15px;
+  top:50%;
+
+  transform:
+    translateY(-50%);
+}
+
+.search input{
+  width:100%;
+
+  padding:
+    13px
+    17px
+    13px
+    43px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:14px;
+
+  outline:none;
+
+  background:#f8f7fb;
+}
+
+.search input:focus{
+  background:white;
+
+  border-color:
+    var(--primary);
+
+  box-shadow:
+    0 0 0 4px
+    rgba(108,77,246,.08);
+}
+
+.actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.icon{
+  width:43px;
+  height:43px;
+
+  border:0;
+  border-radius:13px;
+
+  background:#f0eef5;
+
+  color:var(--dark);
+
+  font-size:17px;
+}
+
+.cartNumber{
+  margin-left:2px;
+  font-size:11px;
+  font-weight:900;
+}
+
+.btn{
+  border:0;
+  border-radius:13px;
+
+  padding:
+    12px 17px;
+
+  font-weight:850;
+}
+
+.primary{
+  color:white;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--primary),
+      var(--primary2)
+    );
+
+  box-shadow:
+    0 8px 20px
+    rgba(108,77,246,.2);
+}
+
+.light{
+  color:var(--dark);
+  background:#f0eef5;
+}
+
+.danger{
+  color:#c33239;
+  background:#ffe8e9;
+}
+
+.hero{
+  max-width:1250px;
+
+  margin:
+    28px auto;
+
+  padding:
+    0 20px;
+}
+
+.heroBox{
+  min-height:340px;
+
+  padding:52px;
+
+  position:relative;
+
+  overflow:hidden;
+
+  border-radius:30px;
+
+  color:white;
+
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(255,255,255,.28),
+      transparent 25%
+    ),
+    linear-gradient(
+      135deg,
+      #32217d,
+      #704df0,
+      #a176ff
+    );
+
+  box-shadow:
+    0 18px 50px
+    rgba(54,36,120,.2);
+}
+
+.heroBox:after{
+  content:"";
+
+  width:350px;
+  height:350px;
+
+  position:absolute;
+
+  right:-120px;
+  bottom:-160px;
+
+  border-radius:50%;
+
+  background:
+    rgba(255,255,255,.08);
+}
+
+.heroContent{
+  position:relative;
+  z-index:2;
+}
+
+.hero h1{
+  max-width:650px;
+
+  font-size:50px;
+  line-height:1.04;
+
+  margin-bottom:18px;
+}
+
+.hero p{
+  max-width:650px;
+
+  font-size:18px;
+  line-height:1.6;
+
+  opacity:.9;
+
+  margin-bottom:25px;
+}
+
+.heroButtons{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.heroButtons .light{
+  background:white;
+  color:#392884;
+}
+
+.categories{
+  max-width:1250px;
+
+  margin:auto;
+
+  padding:
+    0 20px;
+}
+
+.categoryRow{
+  display:flex;
+  gap:10px;
+
+  overflow:auto;
+
+  padding-bottom:5px;
+}
+
+.category{
+  border:
+    1px solid var(--border);
+
+  border-radius:30px;
+
+  background:white;
+
+  padding:
+    11px 17px;
+
+  white-space:nowrap;
+
+  font-weight:800;
+
+  color:#5e5866;
+}
+
+.category.active{
+  color:white;
+
+  background:
+    var(--primary);
+
+  border-color:
+    var(--primary);
+}
+
+.main{
+  max-width:1250px;
+
+  margin:auto;
+
+  padding:
+    30px 20px 70px;
+}
+
+.heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  margin-bottom:18px;
+}
+
+.heading h2{
+  font-size:28px;
+}
+
+.grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:20px;
+}
+
+.card{
+  overflow:hidden;
+
+  background:white;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:21px;
+
+  transition:.22s;
+}
+
+.card:hover{
+  transform:
+    translateY(-5px);
+
+  box-shadow:
+    0 18px 40px
+    rgba(30,20,60,.08);
+}
+
+.cardImg{
+  height:255px;
+
+  background:#eee;
+}
+
+.cardImg img{
+  width:100%;
+  height:100%;
+
+  display:block;
+
+  object-fit:cover;
+}
+
+.noImage{
+  width:100%;
+  height:100%;
+
+  display:grid;
+  place-items:center;
+
+  font-size:50px;
+}
+
+.cardBody{
+  padding:16px;
+}
+
+.cardTitle{
+  font-weight:900;
+  margin-bottom:6px;
+}
+
+.cardMeta{
+  color:var(--muted);
+  font-size:13px;
+
+  margin-bottom:13px;
+}
+
+.cardBottom{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:8px;
+}
+
+.price{
+  font-size:20px;
+  font-weight:950;
+}
+
+.modalBg{
+  position:fixed;
+  inset:0;
+
+  z-index:100;
+
+  display:none;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:18px;
+
+  background:
+    rgba(15,12,22,.58);
+
+  backdrop-filter:
+    blur(6px);
+}
+
+.modalBg.open{
+  display:flex;
+}
+
+.modal{
+  width:
+    min(560px,100%);
+
+  max-height:90vh;
+
+  overflow:auto;
+
+  padding:25px;
+
+  background:white;
+
+  border-radius:25px;
+
+  box-shadow:
+    0 25px 80px
+    rgba(0,0,0,.25);
+}
+
+.modalHead{
+  display:flex;
+
+  justify-content:space-between;
+  align-items:center;
+
+  margin-bottom:21px;
+}
+
+.close{
+  width:38px;
+  height:38px;
+
+  border:0;
+
+  border-radius:50%;
+
+  background:#f1eff5;
+
+  font-size:20px;
+}
+
+.field{
+  margin-bottom:15px;
+}
+
+.field label{
+  display:block;
+
+  margin-bottom:7px;
+
+  font-size:14px;
+  font-weight:850;
+}
+
+.field input,
+.field select,
+.field textarea{
+  width:100%;
+
+  padding:13px;
+
+  outline:none;
+
+  border:
+    1px solid var(--border);
+
+  border-radius:13px;
+
+  background:#faf9fc;
+}
+
+.field textarea{
+  min-height:110px;
+  resize:vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+  background:white;
+
+  border-color:
+    var(--primary);
+}
+
+.error{
+  display:none;
+
+  margin-bottom:14px;
+
+  padding:12px;
+
+  border-radius:12px;
+
+  color:#bd3038;
+
+  background:#fff0f1;
+
+  border:
+    1px solid #ffd0d3;
+}
+
+.error.show{
+  display:block;
+}
+
+.photoBox{
+  margin-bottom:15px;
+
+  padding:20px;
+
+  text-align:center;
+
+  border:
+    2px dashed #ddd7eb;
+
+  border-radius:15px;
+}
+
+.photoBox p{
+  color:var(--muted);
+
+  margin-top:5px;
+}
+
+.photoBox input{
+  max-width:100%;
+  margin-top:12px;
+}
+
+.preview{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:8px;
+
+  margin-top:12px;
+}
+
+.preview img{
+  width:100%;
+
+  aspect-ratio:1;
+
+  object-fit:cover;
+
+  border-radius:10px;
+}
+
+.empty{
+  grid-column:1/-1;
+
+  padding:50px 20px;
+
+  text-align:center;
+
+  color:var(--muted);
+
+  background:white;
+
+  border:
+    1px dashed #dcd7e5;
+
+  border-radius:20px;
+}
+
+.cartItem{
+  display:flex;
+
+  gap:12px;
+
+  padding:12px 0;
+
+  border-bottom:
+    1px solid var(--border);
+}
+
+.cartImage{
+  width:75px;
+  height:75px;
+
+  object-fit:cover;
+
+  border-radius:12px;
+}
+
+.cartInfo{
+  flex:1;
+}
+
+.cartTitle{
+  font-weight:850;
+
+  margin-bottom:5px;
+}
+
+.total{
+  display:flex;
+
+  justify-content:space-between;
+
+  padding:
+    20px 0;
+
+  font-size:21px;
+  font-weight:950;
+}
+
+.testWarning{
+  margin-top:15px;
+
+  padding:12px;
+
+  border-radius:12px;
+
+  color:#735900;
+
+  background:#fff7df;
+
+  font-size:13px;
+}
+
+.footer{
+  padding:35px 20px;
+
+  text-align:center;
+
+  color:#aaa5b2;
+
+  background:var(--dark);
+}
+
+.footer strong{
+  color:white;
+}
+
+.toast{
+  position:fixed;
+
+  z-index:200;
+
+  right:20px;
+  bottom:20px;
+
+  padding:
+    14px 18px;
+
+  border-radius:13px;
+
+  color:white;
+
+  background:#17151f;
+
+  box-shadow:
+    0 12px 30px
+    rgba(0,0,0,.2);
+
+  transform:
+    translateY(100px);
+
+  opacity:0;
+
+  transition:.25s;
+}
+
+.toast.show{
+  transform:
+    translateY(0);
+
+  opacity:1;
+}
+
+@media(max-width:1000px){
+
+  .grid{
+    grid-template-columns:
+      repeat(3,1fr);
+  }
+
+}
+
+@media(max-width:750px){
+
+  .nav{
+    flex-wrap:wrap;
+  }
+
+  .search{
+    order:3;
+    flex-basis:100%;
+  }
+
+  .sellButton{
+    display:none;
+  }
+
+  .heroBox{
+    padding:35px 25px;
+  }
+
+  .hero h1{
+    font-size:38px;
+  }
+
+  .grid{
+    grid-template-columns:
+      repeat(2,1fr);
+
+    gap:12px;
+  }
+
+  .cardImg{
+    height:200px;
+  }
+
+}
+
+@media(max-width:480px){
+
+  .logo{
+    font-size:21px;
+  }
+
+  .hero h1{
+    font-size:34px;
+  }
+
+  .grid{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .cardImg{
+    height:170px;
+  }
+
+  .cardBody{
+    padding:12px;
+  }
+
+  .price{
+    font-size:17px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+
+  <nav class="nav">
+
+    <div class="logo">
+
+      <div class="logoIcon">
+        D
+      </div>
+
+      DadaShop
+
+    </div>
+
+    <div class="search">
+
+      <span>🔎</span>
+
+      <input
+        id="search"
+        type="text"
+        placeholder="Rechercher un article..."
+        oninput="loadProducts()"
+      >
+
+    </div>
+
+    <div class="actions">
+
+      <button
+        class="icon"
+        onclick="changeLanguage()"
+        title="Langue"
+      >
+        🌐
+      </button>
+
+      <button
+        class="icon"
+        onclick="openAccount()"
+        title="Compte"
+      >
+        👤
+      </button>
+
+      <button
+        class="icon"
+        onclick="openCart()"
+        title="Panier"
+      >
+        🛒
+        <span
+          id="cartCount"
+          class="cartNumber"
+        >
+          0
+        </span>
+      </button>
+
+      <button
+        class="btn primary sellButton"
+        onclick="openSell()"
+      >
+        + Vendre
+      </button>
+
+    </div>
+
+  </nav>
+
+</header>
+
+
+<section class="hero">
+
+  <div class="heroBox">
+
+    <div class="heroContent">
+
+      <h1 id="heroTitle">
+        Achète. Vends. Recommence.
+      </h1>
+
+      <p id="heroText">
+        Découvre des articles que tu vas aimer
+        et vends facilement ceux dont tu n'as plus besoin.
+      </p>
+
+      <div class="heroButtons">
+
+        <button
+          class="btn light"
+          onclick="scrollToProducts()"
+        >
+          Découvrir les articles
+        </button>
+
+        <button
+          class="btn primary"
+          onclick="openSell()"
+        >
+          Vendre un article
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="categories">
+
+  <div class="categoryRow">
+
+    <button
+      class="category active"
+      onclick="setCategory('all',this)"
+    >
+      Tout
+    </button>
+
+    <button
+      class="category"
+      onclick="setCategory('Mode',this)"
+    >
+      👕 Mode
+    </button>
+
+    <button
+      class="category"
+      onclick="setCategory('Chaussures',this)"
+    >
+      👟 Chaussures
+    </button>
+
+    <button
+      class="category"
+      onclick="setCategory('Accessoires',this)"
+    >
+      👜 Accessoires
+    </button>
+
+    <button
+      class="category"
+      onclick="setCategory('Maison',this)"
+    >
+      🏠 Maison
+    </button>
+
+    <button
+      class="category"
+      onclick="setCategory('Électronique',this)"
+    >
+      💻 Électronique
+    </button>
+
+  </div>
+
+</section>
+
+
+<main class="main">
+
+  <div class="heading">
+
+    <h2>
+      Dernières annonces
+    </h2>
+
+    <span id="count"></span>
+
+  </div>
+
+  <div
+    id="products"
+    class="grid"
+  ></div>
+
+</main>
+
+
+<footer class="footer">
+
+  <strong>
+    DadaShop
+  </strong>
+
+  <br><br>
+
+  Marketplace de démonstration
+
+</footer>
+
+
+<div
+  id="modalBg"
+  class="modalBg"
+  onclick="closeOutside(event)"
+>
+
+  <div
+    id="modal"
+    class="modal"
+  ></div>
+
+</div>
+
+
+<div
+  id="toast"
+  class="toast"
+></div>
+
+
+<script>
+
+let token =
+  localStorage.getItem(
+    "dadashop_token"
+  ) || "";
+
+let user =
+  JSON.parse(
+    localStorage.getItem(
+      "dadashop_user"
+    ) || "null"
+  );
+
+let cart =
+  JSON.parse(
+    localStorage.getItem(
+      "dadashop_cart"
+    ) || "[]"
+  );
+
+let category = "all";
+
+let languageIndex =
+  Number(
+    localStorage.getItem(
+      "dadashop_language"
+    ) || 0
+  );
+
+const languages = [
+
+  {
+    title:
+      "Achète. Vends. Recommence.",
+
+    text:
+      "Découvre des articles que tu vas aimer et vends facilement ceux dont tu n'as plus besoin.",
+
+    search:
+      "Rechercher un article..."
+  },
+
+  {
+    title:
+      "Buy. Sell. Repeat.",
+
+    text:
+      "Discover items you love and easily sell the things you no longer need.",
+
+    search:
+      "Search for an item..."
+  },
+
+  {
+    title:
+      "Compra. Vende. Repite.",
+
+    text:
+      "Descubre artículos que te encantan y vende lo que ya no necesitas.",
+
+    search:
+      "Buscar un artículo..."
+  },
+
+  {
+    title:
+      "Покупай. Продавай. Повторяй.",
+
+    text:
+      "Находи любимые вещи и продавай то, что тебе больше не нужно.",
+
+    search:
+      "Поиск товара..."
+  },
+
+  {
+    title:
+      "Al. Sat. Yenidən.",
+
+    text:
+      "Sevdiyin məhsulları kəşf et və artıq ehtiyacın olmayan əşyaları asanlıqla sat.",
+
+    search:
+      "Məhsul axtar..."
+  }
+
+];
+
+
+/* ==============================
+   API
+============================== */
+
+async function api(
+  url,
+  options={}
+){
+
+  options.headers = {
+    ...(options.headers || {})
+  };
+
+  if(token){
+
+    options.headers.Authorization =
+      "Bearer " + token;
+
+  }
+
+  const response =
+    await fetch(
+      url,
+      options
+    );
+
+  const data =
+    await response
+      .json()
+      .catch(() => ({}));
+
+  if(!response.ok){
+
+    throw new Error(
+      data.error ||
+      "Une erreur est survenue."
+    );
+
+  }
+
+  return data;
+}
+
+
+/* ==============================
+   PRODUITS
+============================== */
+
+async function loadProducts(){
+
+  try{
+
+    const search =
+      document.getElementById(
+        "search"
+      ).value;
+
+    const params =
+      new URLSearchParams();
+
+    if(search){
+      params.set(
+        "search",
+        search
+      );
+    }
+
+    if(category !== "all"){
+
+      params.set(
+        "category",
+        category
+      );
+
+    }
+
+    const data =
+      await api(
+        "/api/products?" +
+        params.toString()
+      );
+
+    renderProducts(
+      data.products
+    );
+
+  }catch(error){
+
+    showToast(
+      error.message
+    );
+
+  }
+
+}
+
+
+function renderProducts(
+  products
+){
+
+  const container =
+    document.getElementById(
+      "products"
+    );
+
+  document.getElementById(
+    "count"
+  ).textContent =
+    products.length +
+    " article(s)";
+
+  if(!products.length){
+
+    container.innerHTML = `
+
+      <div class="empty">
+
+        <div
+          style="
+            font-size:45px;
+            margin-bottom:10px;
+          "
+        >
+          🔎
+        </div>
+
+        <h3>
+          Aucun article trouvé
+        </h3>
+
+        <p>
+          Essaie une autre recherche.
+        </p>
+
+      </div>
+
+    `;
+
+    return;
+  }
+
+  container.innerHTML =
+    products
+      .map(product => `
+
+        <article class="card">
+
+          <div class="cardImg">
+
+            ${
+              product.image
+
+              ?
+
+              `
+                <img
+                  src="${escapeHTML(
+                    product.image
+                  )}"
+                  alt="${escapeHTML(
+                    product.title
+                  )}"
+                >
+              `
+
+              :
+
+              `
+                <div class="noImage">
+                  📦
+                </div>
+              `
+            }
+
+          </div>
+
+          <div class="cardBody">
+
+            <div class="cardTitle">
+
+              ${escapeHTML(
+                product.title
+              )}
+
+            </div>
+
+            <div class="cardMeta">
+
+              ${escapeHTML(
+                product.category
+              )}
+
+              ·
+
+              ${escapeHTML(
+                product.seller
+              )}
+
+            </div>
+
+            <div class="cardBottom">
+
+              <strong class="price">
+
+                ${Number(
+                  product.price
+                ).toFixed(2)} €
+
+              </strong>
+
+              <button
+                class="btn light"
+                onclick="addCart(
+                  ${product.id}
+                )"
+              >
+                🛒 Ajouter
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      `)
+      .join("");
+
+}
+
+
+/* ==============================
+   CATÉGORIES
+============================== */
+
+function setCategory(
+  value,
+  button
+){
+
+  category = value;
+
+  document
+    .querySelectorAll(
+      ".category"
+    )
+    .forEach(
+      item =>
+        item.classList.remove(
+          "active"
+        )
+    );
+
+  button.classList.add(
+    "active"
+  );
+
+  loadProducts();
+
+}
+
+
+/* ==============================
+   PANIER
+============================== */
+
+function addCart(id){
+
+  cart.push(id);
+
+  localStorage.setItem(
+    "dadashop_cart",
+    JSON.stringify(cart)
+  );
+
+  updateCart();
+
+  showToast(
+    "Article ajouté au panier 🛒"
+  );
+
+}
+
+
+function updateCart(){
+
+  document.getElementById(
+    "cartCount"
+  ).textContent =
+    cart.length;
+
+}
+
+
+async function openCart(){
+
+  if(!cart.length){
+
+    openModal(`
+
+      <div class="modalHead">
+
+        <h2>
+          🛒 Panier
+        </h2>
+
+        <button
+          class="close"
+          onclick="closeModal()"
+        >
+          ×
+        </button>
+
+      </div>
+
+      <div class="empty">
+
+        Ton panier est vide.
+
+      </div>
+
+    `);
+
+    return;
+  }
+
+  try{
+
+    const data =
+      await api(
+        "/api/products"
+      );
+
+    const items =
+      cart
+        .map(
+          id =>
+            data.products.find(
+              product =>
+                product.id === id
+            )
+        )
+        .filter(Boolean);
+
+    const total =
+      items.reduce(
+        (sum,item) =>
+          sum +
+          Number(item.price),
+        0
+      );
+
+    openModal(`
+
+      <div class="modalHead">
+
+        <h2>
+          🛒 Ton panier
+        </h2>
+
+        <button
+          class="close"
+          onclick="closeModal()"
+        >
+          ×
+        </button>
+
+      </div>
+
+      ${items.map(
+        (item,index) => `
+
+          <div class="cartItem">
+
+            ${
+              item.image
+
+              ?
+
+              `
+                <img
+                  class="cartImage"
+                  src="${escapeHTML(
+                    item.image
+                  )}"
+                >
+              `
+
+              :
+
+              `
+                <div
+                  class="cartImage"
+                  style="
+                    display:grid;
+                    place-items:center;
+                    background:#eee;
+                    font-size:30px;
+                  "
+                >
+                  📦
+                </div>
+              `
+            }
+
+            <div class="cartInfo">
+
+              <div class="cartTitle">
+
+                ${escapeHTML(
+                  item.title
+                )}
+
+              </div>
+
+              <strong>
+
+                ${Number(
+                  item.price
+                ).toFixed(2)} €
+
+              </strong>
+
+            </div>
+
+            <button
+              class="btn danger"
+              onclick="removeCart(
+                ${index}
+              )"
+            >
+              ×
+            </button>
+
+          </div>
+
+        `
+      ).join("")}
+
+      <div class="total">
+
+        <span>
+          Total
+        </span>
+
+        <span>
+          ${total.toFixed(2)} €
+        </span>
+
+      </div>
+
+      <button
+        class="btn primary"
+        style="width:100%"
+        onclick="openPayment()"
+      >
+        💳 Continuer vers le paiement
+      </button>
+
+    `);
+
+  }catch(error){
+
+    showToast(
+      error.message
+    );
+
+  }
+
+}
+
+
+function removeCart(index){
+
+  cart.splice(
+    index,
+    1
+  );
+
+  localStorage.setItem(
+    "dadashop_cart",
+    JSON.stringify(cart)
+  );
+
+  updateCart();
+
+  openCart();
+
+}
+
+
+/* ==============================
+   PAIEMENT TEST
+============================== */
+
+function openPayment(){
+
+  if(!user){
+
+    openLogin();
+
+    return;
+
+  }
+
+  openModal(`
+
+    <div class="modalHead">
+
+      <h2>
+        💳 Paiement
+      </h2>
+
+      <button
+        class="close"
+        onclick="closeModal()"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <p style="
+      color:var(--muted);
+      line-height:1.6;
+      margin-bottom:18px;
+    ">
+
+      Choisis un moyen de paiement
+      de démonstration.
+
+    </p>
+
+    <button
+      class="btn light"
+      style="
+        width:100%;
+        text-align:left;
+        margin-bottom:10px;
+      "
+      onclick="testPayment(
+        'Carte de test'
+      )"
+    >
+      💳 Carte bancaire de test
+    </button>
+
+    <button
+      class="btn light"
+      style="
+        width:100%;
+        text-align:left;
+      "
+      onclick="testPayment(
+        'PayPal de test'
+      )"
+    >
+      🅿️ PayPal de test
+    </button>
+
+    <div class="testWarning">
+
+      ⚠️ Mode développement :
+      aucun argent réel n'est débité
+      et aucun vendeur ne reçoit d'argent.
+
+    </div>
+
+  `);
+
+}
+
+
+async function testPayment(
+  method
+){
+
+  if(!cart.length){
+    return;
+  }
+
+  try{
+
+    const productId =
+      cart[0];
+
+    await api(
+      "/api/orders/test-payment",
+      {
+        method:"POST",
+
+        headers:{
+          "Content-Type":
+            "application/json"
+        },
+
+        body:JSON.stringify({
+          productId,
+          paymentMethod:
+            method
+        })
+      }
+    );
+
+    cart.shift();
+
+    localStorage.setItem(
+      "dadashop_cart",
+      JSON.stringify(cart)
+    );
+
+    updateCart();
+
+    closeModal();
+
+    await loadProducts();
+
+    showToast(
+      "Commande de test créée ✅"
+    );
+
+  }catch(error){
+
+    showToast(
+      error.message
+    );
+
+  }
+
+}
+
+
+/* ==============================
+   CONNEXION
+============================== */
+
+function openLogin(){
+
+  openModal(`
+
+    <div class="modalHead">
+
+      <h2>
+        👤 Connexion
+      </h2>
+
+      <button
+        class="close"
+        onclick="closeModal()"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div
+      id="loginError"
+      class="error"
+    ></div>
+
+    <form
+      onsubmit="login(event)"
+    >
+
+      <div class="field">
+
+        <label>
+          Email
+        </label>
+
+        <input
+          id="loginEmail"
+          type="email"
+          required
+          placeholder="ton@email.com"
+        >
+
+      </div>
+
+      <div class="field">
+
+        <label>
+          Mot de passe
+        </label>
+
+        <input
+          id="loginPassword"
+          type="password"
+          required
+          placeholder="••••••••"
+        >
+
+      </div>
+
+      <button
+        class="btn primary"
+        style="width:100%"
+      >
+        Se connecter
+      </button>
+
+    </form>
+
+    <div style="
+      text-align:center;
+      margin-top:18px;
+      color:var(--muted);
+    ">
+
+      Pas encore de compte ?
+
+      <button
+        onclick="openRegister()"
+        style="
+          border:0;
+          background:none;
+          color:var(--primary);
+          font-weight:900;
+        "
+      >
+        Créer un compte
+      </button>
+
+    </div>
+
+  `);
+
+}
+
+
+async function login(
+  event
+){
+
+  event.preventDefault();
+
+  const error =
+    document.getElementById(
+      "loginError"
+    );
+
+  try{
+
+    const email =
+      document.getElementById(
+        "loginEmail"
+      ).value;
+
+    const password =
+      document.getElementById(
+        "loginPassword"
+      ).value;
+
+    const data =
+      await api(
+        "/api/login",
+        {
+          method:"POST",
+
+          headers:{
+            "Content-Type":
+              "application/json"
+          },
+
+          body:JSON.stringify({
+            email,
+            password
+          })
+        }
+      );
+
+    token =
+      data.token;
+
+    user =
+      data.user;
+
+    localStorage.setItem(
+      "dadashop_token",
+      token
+    );
+
+    localStorage.setItem(
+      "dadashop_user",
+      JSON.stringify(user)
+    );
+
+    closeModal();
+
+    showToast(
+      "Connexion réussie 👋"
+    );
+
+  }catch(error){
+
+    error.classList.add(
+      "show"
+    );
+
+    error.textContent =
+      error.message;
+
+  }
+
+}
+
+
+/* ==============================
+   INSCRIPTION
+============================== */
+
+function openRegister(){
+
+  openModal(`
+
+    <div class="modalHead">
+
+      <h2>
+        ✨ Créer un compte
+      </h2>
+
+      <button
+        class="close"
+        onclick="closeModal()"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div
+      id="registerError"
+      class="error"
+    ></div>
+
+    <form
+      onsubmit="register(event)"
+    >
+
+      <div class="field">
+
+        <label>
+          Nom
+        </label>
+
+        <input
+          id="registerName"
+          required
+          placeholder="Ton nom"
+        >
+
+      </div>
+
+      <div class="field">
+
+        <label>
+          Email
+        </label>
+
+        <input
+          id="registerEmail"
+          type="email"
+          required
+          placeholder="ton@email.com"
+        >
+
+      </div>
+
+      <div class="field">
+
+        <label>
+          Mot de passe
+        </label>
+
+        <input
+          id="registerPassword"
+          type="password"
+          minlength="6"
+          required
+          placeholder="Minimum 6 caractères"
+        >
+
+      </div>
+
+      <button
+        class="btn primary"
+        style="width:100%"
+      >
+        Créer mon compte
+      </button>
+
+    </form>
+
+  `);
+
+}
+
+
+async function register(
+  event
+){
+
+  event.preventDefault();
+
+  const error =
+    document.getElementById(
+      "registerError"
+    );
+
+  try{
+
+    const name =
+      document.getElementById(
+        "registerName"
+      ).value;
+
+    const email =
+      document.getElementById(
+        "registerEmail"
+      ).value;
+
+    const password =
+      document.getElementById(
+        "registerPassword"
+      ).value;
+
+    const data =
+      await api(
+        "/api/register",
+        {
+          method:"POST",
+
+          headers:{
+            "Content-Type":
+              "application/json"
+          },
+
+          body:JSON.stringify({
+            name,
+            email,
+            password
+          })
+        }
+      );
+
+    token =
+      data.token;
+
+    user =
+      data.user;
+
+    localStorage.setItem(
+      "dadashop_token",
+      token
+    );
+
+    localStorage.setItem(
+      "dadashop_user",
+      JSON.stringify(user)
+    );
+
+    closeModal();
+
+    showToast(
+      "Compte créé 🎉"
+    );
+
+  }catch(error){
+
+    error.classList.add(
+      "show"
+    );
+
+    error.textContent =
+      error.message;
+
+  }
+
+}
+
+
+/* ==============================
+   COMPTE
+============================== */
+
+function openAccount(){
+
+  if(!user){
+
+    openLogin();
+
+    return;
+
+  }
+
+  openModal(`
+
+    <div class="modalHead">
+
+      <h2>
+        👤 Mon compte
+      </h2>
+
+      <button
+        class="close"
+        onclick="closeModal()"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div style="
+      text-align:center;
+    ">
+
+      <div style="
+        width:76px;
+        height:76px;
+        margin:auto;
+        display:grid;
+        place-items:center;
+        border-radius:50%;
+        color:white;
+        background:
+          linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary2)
+          );
+        font-size:30px;
+        font-weight:900;
+      ">
+
+        ${escapeHTML(
+          user.name
+            .charAt(0)
+            .toUpperCase()
+        )}
+
+      </div>
+
+      <h2 style="
+        margin-top:12px;
+      ">
+
+        ${escapeHTML(
+          user.name
+        )}
+
+      </h2>
+
+      <p style="
+        color:var(--muted);
+        margin:7px 0 20px;
+      ">
+
+        ${escapeHTML(
+          user.email
+        )}
+
+      </p>
+
+      <button
+        class="btn light"
+        style="
+          width:100%;
+          margin-bottom:10px;
+        "
+        onclick="openMyProducts()"
+      >
+        📦 Mes annonces
+      </button>
+
+      <button
+        class="btn light"
+        style="
+          width:100%;
+          margin-bottom:10px;
+        "
+        onclick="openOrders()"
+      >
+        🧾 Mes commandes
+      </button>
+
+      <button
+        class="btn danger"
+        style="width:100%"
+        onclick="logout()"
+      >
+        Déconnexion
+      </button>
+
+    </div>
+
+  `);
+
+}
+
+
+function logout(){
+
+  token = "";
+  user = null;
+
+  localStorage.removeItem(
+    "dadashop_token"
+  );
+
+  localStorage.removeItem(
+    "dadashop_user"
+  );
+
+  closeModal();
+
+  showToast(
+    "Déconnexion réussie."
+  );
+
+}
+
+
+/* ==============================
+   VENDRE
+============================== */
+
+function openSell(){
+
+  if(!user){
+
+    openLogin();
+
+    return;
+
+  }
+
+  openModal(`
+
+    <div class="modalHead">
+
+      <h2>
+        📦 Vendre un article
+      </h2>
+
+      <button
+        class="close"
+        onclick="closeModal()"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <form
+      id="sellForm"
+      onsubmit="createProduct(event)"
+    >
+
+      <div class="field">
+
+        <label>
+          Nom de l'article
+        </label>
+
+        <input
+          name="title"
+          required
+          placeholder="Ex : Veste Nike"
+        >
+
+      </div>
+
+      <div class="field">
+
+        <label>
+          Prix (€)
+        </label>
+
+        <input
+          name="price"
+          type="number"
+          min="0.01"
+          step="0.01"
+          required
+          placeholder="25"
+        >
+
+      </div>
+
+      <div class="field">
+
+        <label>
+          Catégorie
+        </label>
+
+        <select
+          name="category"
+          required
+        >
+
+          <option value="Mode">
+            Mode
+          </option>
+
+          <option value="Chaussures">
+            Chaussures
+          </option>
+
+          <option value="Accessoires">
+            Accessoires
+          </option>
+
+          <option value="Maison">
+            Maison
+          </option>
+
+          <option value="Électronique">
+            Électronique
+          </option>
+
+        </select>
+
+      </div>
+
+      <div class="field">
+
+        <label>
+          Description
+        </label>
+
+        <textarea
+          name="description"
+          placeholder="Décris ton article..."
+        ></textarea>
+
+      </div>
+
+      <div class="photoBox">
+
+        <strong>
+          📸 Ajouter des photos
+        </strong>
+
+        <p>
+          Choisis les photos depuis ton appareil.
+        </p>
+
+        <input
+          id="photos"
+          name="photos"
+          type="file"
+          accept="image/*"
+          multiple
+          onchange="previewPhotos(event)"
+        >
+
+        <div
+          id="preview"
+          class="preview"
+        ></div>
+
+      </div>
+
+      <button
+        class="btn primary"
+        style="width:100%"
+      >
+        Publier l'article
+      </button>
+
+    </form>
+
+  `);
+
+}
+
+
+function previewPhotos(
+  event
+){
+
+  const preview =
+    document.getElementById(
+      "preview"
+    );
+
+  preview.innerHTML = "";
+
+  const files =
+    Array.from(
+      event.target.files || []
+    );
+
+  files.forEach(file => {
+
+    const reader =
+      new FileReader();
+
+    reader.onload =
+      function(event){
+
+        const image =
+          document.createElement(
+            "img"
+          );
+
+        image.src =
+          event.target.result;
+
+        preview.appendChild(
+          image
+        );
+
+      };
+
+    reader.readAsDataURL(
+      file
+    );
+
+  });
+
+}
+
+
+async function createProduct(
+  event
+){
+
+  event.preventDefault();
+
+  try{
+
+    const form =
+      document.getElementById(
+        "sellForm"
+      );
+
+    const formData =
+      new FormData(form);
+
+    await api(
+      "/api/products",
+      {
+        method:"POST",
+        body:formData
+      }
+    );
+
+    closeModal();
+
+    await loadProducts();
+
+    showToast(
+      "Article publié 🎉"
+    );
+
+  }catch(error){
+
+    showToast(
+      error.message
+    );
+
+  }
+
+}
+
+
+/* ==============================
+   MES ANNONCES
+============================== */
+
+async function openMyProducts(){
+
+  try{
+
+    const data =
+      await api(
+        "/api/my-products"
+      );
+
+    openModal(`
+
+      <div class="modalHead">
+
+        <h2>
+          📦 Mes annonces
+        </h2>
+
+        <button
+          class="close"
+          onclick="closeModal()"
+        >
+          ×
+        </button>
+
+      </div>
+
+      ${
+        data.products.length
+
+        ?
+
+        data.products
+          .map(product => `
+
+            <div style="
+              padding:14px 0;
+              border-bottom:
+                1px solid var(--border);
+            ">
+
+              <strong>
+                ${escapeHTML(
+                  product.title
+                )}
+              </strong>
+
+              <br>
+
+              ${Number(
+                product.price
+              ).toFixed(2)} €
+
+              <br>
+
+              <small style="
+                color:var(--muted);
+              ">
+                ${escapeHTML(
+                  product.status
+                )}
+              </small>
+
+            </div>
+
+          `)
+          .join("")
+
+        :
+
+        `
+          <div class="empty">
+            Tu n'as aucune annonce.
+          </div>
+        `
+      }
+
+    `);
+
+  }catch(error){
+
+    showToast(
+      error.message
+    );
+
+  }
+
+}
+
+
+/* ==============================
+   COMMANDES
+============================== */
+
+async function openOrders(){
+
+  try{
+
+    const data =
+      await api(
+        "/api/orders"
+      );
+
+    openModal(`
+
+      <div class="modalHead">
+
+        <h2>
+          🧾 Mes commandes
+        </h2>
+
+        <button
+          class="close"
+          onclick="closeModal()"
+        >
+          ×
+        </button>
+
+      </div>
+
+      ${
+        data.orders.length
+
+        ?
+
+        data.orders
+          .map(order => `
+
+            <div style="
+              padding:14px 0;
+              border-bottom:
+                1px solid var(--border);
+            ">
+
+              <strong>
+                ${escapeHTML(
+                  order.title
+                )}
+              </strong>
+
+              <br>
+
+              ${Number(
+                order.amount
+              ).toFixed(2)} €
+
+              <br>
+
+              <small style="
+                color:var(--muted);
+              ">
+
+                ${escapeHTML(
+                  order.status
+                )}
+
+              </small>
+
+            </div>
+
+          `)
+          .join("")
+
+        :
+
+        `
+          <div class="empty">
+            Aucune commande.
+          </div>
+        `
+      }
+
+    `);
+
+  }catch(error){
+
+    showToast(
+      error.message
+    );
+
+  }
+
+}
+
+
+/* ==============================
+   LANGUES
+============================== */
+
+function changeLanguage(){
+
+  languageIndex =
+    (
+      languageIndex + 1
+    ) % languages.length;
+
+  localStorage.setItem(
+    "dadashop_language",
+    languageIndex
+  );
+
+  const language =
+    languages[
+      languageIndex
+    ];
+
+  document.getElementById(
+    "heroTitle"
+  ).textContent =
+    language.title;
+
+  document.getElementById(
+    "heroText"
+  ).textContent =
+    language.text;
+
+  document.getElementById(
+    "search"
+  ).placeholder =
+    language.search;
+
+  showToast(
+    "Langue changée"
+  );
+
+}
+
+
+/* ==============================
+   MODALES
+============================== */
+
+function openModal(
+  content
+){
+
+  document.getElementById(
+    "modal"
+  ).innerHTML =
+    content;
+
+  document.getElementById(
+    "modalBg"
+  ).classList.add(
+    "open"
+  );
+
+}
+
+
+function closeModal(){
+
+  document.getElementById(
+    "modalBg"
+  ).classList.remove(
+    "open"
+  );
+
+}
+
+
+function closeOutside(
+  event
+){
+
+  if(
+    event.target.id ===
+    "modalBg"
+  ){
+
+    closeModal();
+
+  }
+
+}
+
+
+/* ==============================
+   UTILITAIRES
+============================== */
+
+function showToast(
+  message
+){
+
+  const toast =
+    document.getElementById(
+      "toast"
+    );
+
+  toast.textContent =
+    message;
+
+  toast.classList.add(
+    "show"
+  );
+
+  clearTimeout(
+    window.toastTimer
+  );
+
+  window.toastTimer =
+    setTimeout(
+      () => {
+
+        toast.classList.remove(
+          "show"
+        );
+
+      },
+      2800
+    );
+
+}
+
+
+function scrollToProducts(){
+
+  document
+    .querySelector(".main")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+
+function escapeHTML(
+  value
+){
+
+  return String(
+    value ?? ""
+  )
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
+
+}
+
+
+/* ==============================
+   DÉMARRAGE
+============================== */
+
+updateCart();
+
+loadProducts();
+
+</script>
+
+</body>
+
+</html>
+```
